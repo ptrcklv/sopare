@@ -17,12 +17,12 @@ License for the specific language governing permissions and limitations
 under the License.
 """
 
-import ConfigParser
+import configparser
 
 class config():
 
     def __init__(self, config_file = 'config/default.ini'):
-        self.config = ConfigParser.ConfigParser(allow_no_value=True)
+        self.config = configparser.ConfigParser(allow_no_value=True)
         self.config.read(config_file)
         self.logger = None
 
@@ -56,6 +56,6 @@ class config():
     def showconfig(self):
         print ('current config:')
         for section in self.config.sections():
-            print (str(section))
+            print((str(section)))
             for option in self.config.options(section):
-                print (' ' + str(option) + ' = ' + str(self.getoption(section, option)))
+                print((' ' + str(option) + ' = ' + str(self.getoption(section, option))))

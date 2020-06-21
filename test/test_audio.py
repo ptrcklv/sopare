@@ -24,7 +24,7 @@ import audioop
 import math
 import time
 import sys
-import test_multi
+from . import test_multi
 sys.path.append('../sopare')
 import sopare.log
 import sopare.config
@@ -63,10 +63,10 @@ class test_audio(unittest.TestCase):
                     vol = current_vol
             self.silence.append(vol)
             test_result = True
-            print ('Excellent. Got all '+str(chunks*loops) + ' chunks.')
+            print(('Excellent. Got all '+str(chunks*loops) + ' chunks.'))
         except IOError as e:
             test_result = False
-            print ("Error: "+ str(e))
+            print(("Error: "+ str(e)))
         return test_result
 
     def test_environment(self):
@@ -105,14 +105,14 @@ class test_audio(unittest.TestCase):
         if (found == True):
             best = sorted(recommendations, key=recommendations.__getitem__, reverse = True)
             print ('Your sopare/config.py recommendations:\n')
-            print ('SAMPLE_RATE = '+str(max(best)))
-            print ('CHUNK = '+str(min(test_audio.TEST_RESULTS[best[0]])))
+            print(('SAMPLE_RATE = '+str(max(best))))
+            print(('CHUNK = '+str(min(test_audio.TEST_RESULTS[best[0]]))))
             treshold = int(math.ceil(max(self.silence) / 100.0)) * 100
-            print ('THRESHOLD = '+str(treshold))
+            print(('THRESHOLD = '+str(treshold)))
         else:
             print ('No recommendations, please fix your environment and try again!')
             print ('However, here are the sucessful tested sample rates:')
-            print (str(test_audio.TEST_RESULTS))
+            print((str(test_audio.TEST_RESULTS)))
 
     def stop(self):
         while (self.queue.qsize() > 0):

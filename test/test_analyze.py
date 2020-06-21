@@ -43,7 +43,7 @@ class test_analyze(unittest.TestCase):
         for t in range(1,4):
             test_framing, correct_object = self.create_test_framing(t)
             result = self.analyze.get_match(test_framing)
-            print ('testing normal conditions (' + str(t) + ')' +str(result) + ' == ' + str(correct_object))
+            print(('testing normal conditions (' + str(t) + ')' +str(result) + ' == ' + str(correct_object)))
             self.assertSequenceEqual(result, correct_object, 'test_analyze_get_match('+str(t)+') failed!')
 
         # Testing leading empty results
@@ -51,20 +51,20 @@ class test_analyze(unittest.TestCase):
         test_framing.insert(0, '')
         self.cfg.setoption('compare', 'FILL_RESULT_PERCENTAGE', '0.1')
         result = self.analyze.get_match(test_framing)
-        print ('testing leading space '+str(result) + ' == ' + str(correct_object))
+        print(('testing leading space '+str(result) + ' == ' + str(correct_object)))
         self.assertSequenceEqual(result, correct_object, 'test_analyze_get_match leading results failed!')
 
         # Testing ending empty results
         test_framing, correct_object = self.create_test_framing(t)
         test_framing.append('')
         result = self.analyze.get_match(test_framing)
-        print ('testing ending space '+str(result) + ' == ' + str(correct_object))
+        print(('testing ending space '+str(result) + ' == ' + str(correct_object)))
         self.assertSequenceEqual(result, correct_object, 'test_analyze_get_match ending results failed!')
 
         # Testing correct order
         test_framing, correct_object = self.create_test_framing_order()
         result = self.analyze.get_match(test_framing)
-        print ('testing correct order '+str(result) + ' == ' + str(correct_object))
+        print(('testing correct order '+str(result) + ' == ' + str(correct_object)))
         self.assertSequenceEqual(result, correct_object, 'test_analyze_get_match order results failed!')
 
         # Testing strict length
@@ -72,14 +72,14 @@ class test_analyze(unittest.TestCase):
         #config.STRICT_LENGTH_UNDERMINING = 2
         test_framing, correct_object = self.create_test_framing_order_strict_length()
         result = self.analyze.get_match(test_framing)
-        print ('testing strict length '+str(result) + ' == ' + str(correct_object))
+        print(('testing strict length '+str(result) + ' == ' + str(correct_object)))
         self.assertSequenceEqual(result, correct_object, 'test_analyze_get_match strict length results failed!')
 
         # Testing false leading results
         self.cfg.setoption('compare' , 'STRICT_LENGTH_CHECK', 'True')
         test_framing, correct_object = self.create_test_framing_false_leading_results()
         result = self.analyze.get_match(test_framing)
-        print ('testing false leading results '+str(result) + ' == ' + str(correct_object))
+        print(('testing false leading results '+str(result) + ' == ' + str(correct_object)))
         self.assertSequenceEqual(result, correct_object, 'test_analyze_get_match false leading results failed!')
 
     def create_test_framing(self, number):

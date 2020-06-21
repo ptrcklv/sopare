@@ -193,7 +193,7 @@ class analyze():
                 self.logger.debug('loading and initialzing '+pluginpath)
                 f, filename, description = imp.find_module('__init__', [pluginpath])
                 self.plugins.append(imp.load_module(plugin, f, filename, description))
-            except ImportError, err:
+            except ImportError as err:
                 self.logger.error('ImportError: %s', err)
 
     def reset(self):

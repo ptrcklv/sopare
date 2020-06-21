@@ -39,17 +39,17 @@ class util:
     def showdictentriesbyid(self):
         json_data = self.getDICT()
         for dict_entries in json_data['dict']:
-            print (dict_entries['id'] + ' ' + dict_entries['uuid'])
+            print((dict_entries['id'] + ' ' + dict_entries['uuid']))
 
     def showdictentry(self, sid):
         json_data = self.getDICT()
         ids = [ ]
         for dict_entries in json_data['dict']:
             if ((dict_entries['id'] == sid or sid == "*") and dict_entries['id'] not in ids):
-                print (dict_entries['id'] + ' - ' + dict_entries['uuid'])
+                print((dict_entries['id'] + ' - ' + dict_entries['uuid']))
                 for i, entry in enumerate(dict_entries['characteristic']):
                     output = str(entry['norm'])
-                    print (str(i)+ ', ' + str(entry['fc']) + ', ' + output[1:len(output)-1])
+                    print((str(i)+ ', ' + str(entry['fc']) + ', ' + output[1:len(output)-1]))
 
     @staticmethod
     def compile_analysis(json_data):
@@ -60,7 +60,7 @@ class util:
             l = len(dict_entries['characteristic'])
             if (l < 2):
                 print ('the following characteristic is < 2!')
-                print (dict_entries['id'] + ', ' + dict_entries['uuid'])
+                print((dict_entries['id'] + ', ' + dict_entries['uuid']))
             if (l > analysis[dict_entries['id']]['max_tokens']):
                 analysis[dict_entries['id']]['max_tokens'] = l
             if (l < analysis[dict_entries['id']]['min_tokens'] or analysis[dict_entries['id']]['min_tokens'] == 0):
@@ -167,7 +167,7 @@ class util:
                         self.add_weighting(tokens)
                         compiled_dict['dict'].append({'id': json_obj['id'], 'characteristic': tokens, 'uuid': file_uuid })
                     else:
-                        print (json_obj['id'] + ' ' + file_uuid+ ' got no tokens!')
+                        print((json_obj['id'] + ' ' + file_uuid+ ' got no tokens!'))
                 raw_json_file.close()
         return compiled_dict
 

@@ -18,6 +18,8 @@ under the License.
 """
 
 import sys
+sys.path.append(".")
+sys.path.append("./test")
 import getopt
 import sopare.config as config
 import sopare.util as util
@@ -40,7 +42,7 @@ def main(argv):
     recreate = False
     unit = False
 
-    print ("sopare "+__version__)
+    print(("sopare "+__version__))
 
     if (len(argv) > 0):
         try:
@@ -131,15 +133,15 @@ def recreate_dict(debug, cfg):
 
 def delete_word(dict, debug):
     if (dict != "*"):
-        print ("deleting "+dict+" from dictionary")
+        print(("deleting "+dict+" from dictionary"))
     else:
         print ("deleting all enttries from dictionary")
     utilities = util.util(debug, None)
     utilities.deletefromdict(dict)
 
 def show_word_entries(dict, debug):
-    print (dict+" entries in dictionary:")
-    print
+    print((dict+" entries in dictionary:"))
+    print()
     utilities = util.util(debug, None)
     utilities.showdictentry(dict)
 
@@ -154,8 +156,8 @@ def show_dict_analysis(debug):
     analysis = utilities.compile_analysis(utilities.getDICT())
     for id in analysis:
         print (id)
-        for k, v in analysis[id].iteritems():
-            print (' ' + str(k) + ' ' + str(v))
+        for k, v in analysis[id].items():
+            print((' ' + str(k) + ' ' + str(v)))
 
 def unit_tests(debug, cfg):
     print ("starting unit tests...")

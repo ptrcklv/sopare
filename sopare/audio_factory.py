@@ -33,7 +33,7 @@ class audio_factory():
     def open(self, sample_rate, input_format=pyaudio.paInt16):
         if (self.debug_once == False):
             self.logger.debug('#### Default input device info #####')
-            for k, v in self.pa.get_default_input_device_info().iteritems():
+            for k, v in self.pa.get_default_input_device_info().items():
                 self.logger.debug(str(k) + ': ' + str(v))
             self.debug_once = True
         try:
