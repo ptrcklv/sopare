@@ -26,6 +26,7 @@ import time
 import sys
 import test_multi
 sys.path.append('../sopare')
+sys.path.append('..')
 import sopare.log
 import sopare.config
 import sopare.audio_factory

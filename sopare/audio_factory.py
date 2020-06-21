@@ -42,6 +42,7 @@ class audio_factory():
                 rate=sample_rate,
                 input=True,
                 output=False,
+                input_device_index=11,
                 frames_per_buffer = self.cfg.getintoption('stream', 'CHUNK'))
         except IOError as e:
             self.logger.error("Error: " + str(e))
