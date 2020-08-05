@@ -77,14 +77,14 @@ class filtering():
             self.data_shift = [ ]
             self.data_shift_counter = 0
         if (self.data_shift_counter == 0):
-            self.data_shift = [ v for v in range(0, self.cfg.getintoption('stream', 'CHUNKS')/2) ]
-            self.data_shift.extend(data[len(data)/2:])
+            self.data_shift = [ v for v in range(0, int(self.cfg.getintoption('stream', 'CHUNKS')/2)) ]
+            self.data_shift.extend(data[int(len(data)/2):])
         elif (self.data_shift_counter == 1):
-            self.data_shift = self.data_shift[len(self.data_shift)/2:]
-            self.data_shift.extend(data[0:len(data)/2])
+            self.data_shift = self.data_shift[int(len(self.data_shift)/2):]
+            self.data_shift.extend(data[0:int(len(data)/2)])
         else:
-            self.data_shift = self.last_data[len(self.last_data)/2:]
-            self.data_shift.extend(data[0:len(data)/2])
+            self.data_shift = self.last_data[int(len(self.last_data)/2):]
+            self.data_shift.extend(data[0:int(len(data)/2)])
 
         self.last_data = data
         self.data_shift_counter += 1

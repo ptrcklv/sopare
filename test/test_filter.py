@@ -45,6 +45,6 @@ class test_filter(unittest.TestCase):
             if (x == 0):
                 self.filter.first = False
             else:
-                correct_object = data_object_array[x-self.CHUNKS/2:x+self.CHUNKS/2]
+                correct_object = data_object_array[int(x-self.CHUNKS/2):int(x+self.CHUNKS/2)]
                 print(('testing n_shift '+str(self.filter.data_shift) + ' == ' + str(correct_object)))
                 self.assertSequenceEqual(self.filter.data_shift, correct_object, 'test_filter_n_shift 0 failed!')
