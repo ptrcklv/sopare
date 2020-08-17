@@ -104,6 +104,7 @@ class util:
     @staticmethod
     def store_raw_dict_entry(dict_id, raw_characteristics):
         json_obj = {'id': dict_id, 'characteristic': raw_characteristics, 'created': datetime.datetime.now().isoformat() }
+        print ("DEBUG store_raw_dict_entry:json_obj", json_obj)
         with open("dict/"+str(uuid.uuid4())+".raw", 'w') as json_file:
             json.dump(json_obj, json_file, cls=sopare.numpyjsonencoder.numpyjsonencoder)
         json_file.close()
@@ -135,7 +136,7 @@ class util:
     @staticmethod
     def writeDICT(json_data):
         with open("dict/dict.json", 'w') as json_file:
-            json.dump(json_data, json_file)
+            json.dump(json_data, json_file, cls=sopare.numpyjsonencoder.numpyjsonencoder)  #pl inserted for np.int64
         json_file.close()
 
     @staticmethod

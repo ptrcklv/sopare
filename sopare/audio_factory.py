@@ -39,6 +39,7 @@ class audio_factory():
         try:
             self.stream = self.pa.open(format = input_format,
                 channels = 1, # mono
+                input_device_index=11,
                 rate=sample_rate,
                 input=True,
                 output=False,
